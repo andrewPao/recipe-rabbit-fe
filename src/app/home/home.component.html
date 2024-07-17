@@ -1,1 +1,23 @@
-<p>home works!</p>
+<div class="container">
+    <h1>Welcome to Recipe Rabbit Website</h1>
+    <div class="buttons">
+        <button class="btn btn-primary" (click)="signUpButtonTrigger()">Sign Up</button>
+        <button class="btn btn-secondary" (click)="loginButtonTrigger()">Login</button>
+    </div>
+
+    <div *ngIf = "loginButton == true" class= "login-form slide-in" >
+        <div class="login-box">
+            <h2>Login</h2>
+            <form>
+              <div class="user-box">
+                <input type="text" name="" required="">
+                <label>Username</label>
+              </div>
+              <div class="user-box">
+                <input type="password" name="" required="">
+                <label>Password</label>
+              </div>
+            </form>
+          </div>
+
+  </div>

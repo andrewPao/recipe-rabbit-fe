@@ -1,0 +1,126 @@
+.container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn {
+    margin-left: 10px; /* Adds space between the buttons */
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.btn-primary,
+.btn-secondary {
+    border: none;
+    cursor: pointer;
+    color: rgb(104, 85, 224);
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(104, 85, 224, 1);
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+    opacity: 0.8;
+}
+
+button:hover {
+    color: white;
+    box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
+    background-color: rgba(104, 85, 224, 1);
+}
+
+button {
+    cursor: pointer;
+    border: 0;
+    border-radius: 4px;
+    font-weight: 600;
+    margin: 0 10px;
+    width: 200px;
+    padding: 10px 0;
+    box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
+    transition: 0.4s;
+}
+
+.login-form {
+    position: absolute;
+    bottom: -200px; /* Start off-screen */
+    left: 40%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, 0); /* Center horizontally */
+    background: rgba(104, 85, 224, 0.6);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(103, 85, 224, 0.46);
+    border-radius: 10px;
+    opacity: 0; /* Start invisible */
+    transition: bottom 0.5s ease, opacity 0.5s ease;
+}
+
+.login-form.slide-in {
+    bottom: 50%; /* Move to center vertically */
+    opacity: 1; /* Make visible */
+    transform: translate(-50%, 50%); /* Adjust for centering */
+}
+
+.login-box h2 {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+}
+
+.login-box .user-box {
+    position: relative;
+}
+
+.login-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+.login-box .user-box label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label {
+    top: -20px;
+    left: 0;
+    color: #fff;
+    font-size: 12px;
+}
+
+.slide-in {
+    animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(100%); /* Start from below */
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0); /* Move to original position */
+        opacity: 1;
+    }
+}
