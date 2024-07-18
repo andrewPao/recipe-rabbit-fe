@@ -35,12 +35,12 @@ export class HomeComponent implements OnInit {
   }
 
   signUpButtonTrigger(){
-    this.signUpButton = !this.signUpButton;
+    this.signUpButton = true;
     this.loginButton = false;
   }
 
   loginButtonTrigger(){
-    this.loginButton = !this.loginButton;
+    this.loginButton = true;
     this.signUpButton = false;
   }
 

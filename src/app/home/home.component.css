@@ -1,13 +1,17 @@
 .container {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 50px;
+    text-align: center;
     
 }
 
 .buttons {
-    margin-top: 20px;
     display: flex;
-    justify-content: flex-end;
+  justify-content: flex-end; /* Align buttons to the right */
+  width: 100%; /* Ensure buttons take full width */
+  margin-top: 20px;
 }
 
 .btn {
@@ -49,9 +53,8 @@ button {
 }
 
 .login-form {
-    position: absolute;
+    position:relative;
     bottom: -200px; /* Start off-screen */
-    left: 40%;
     width: 400px;
     padding: 40px;
     transform: translate(-50%, 0); /* Center horizontally */
@@ -70,9 +73,8 @@ button {
 }
 
 .login-form2 {
-    position: absolute;
+    position: relative;
     bottom: -200px; /* Start off-screen */
-    left: 40%;
     width: 400px;
     padding: 40px;
     transform: translate(-50%, 0); /* Center horizontally */
