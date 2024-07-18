@@ -1,23 +1,49 @@
 <div class="container">
-    <h1>Welcome to Recipe Rabbit Website</h1>
-    <div class="buttons">
-        <button class="btn btn-primary" (click)="signUpButtonTrigger()">Sign Up</button>
-        <button class="btn btn-secondary" (click)="loginButtonTrigger()">Login</button>
-    </div>
-
-    <div *ngIf = "loginButton == true" class= "login-form slide-in" >
-        <div class="login-box">
-            <h2>Login</h2>
-            <form>
-              <div class="user-box">
-                <input type="text" name="" required="">
-                <label>Username</label>
-              </div>
-              <div class="user-box">
-                <input type="password" name="" required="">
-                <label>Password</label>
-              </div>
-            </form>
-          </div>
-
+  <h1>Welcome to Recipe Rabbit Website</h1>
+  <div class="buttons">
+    <button class="btn btn-primary" (click)="signUpButtonTrigger()">Sign Up</button>
+    <button class="btn btn-secondary" (click)="loginButtonTrigger()">Login</button>
   </div>
+
+  <div *ngIf="loginButton" class="login-form slide-in">
+    <div class="login-box">
+      <h2>Login</h2>
+      <form>
+        <div class="user-box">
+          <input type="text" name="loginUsername" required>
+          <label>Username</label>
+        </div>
+        <div class="user-box">
+          <input type="password" name="loginPassword" required>
+          <label>Password</label>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div *ngIf="signUpButton" class="login-form2 slide-in">
+    <div class="login-box">
+      <h2>Sign Up</h2>
+      <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+        <div class="user-box">
+          <input type="text" name="signUpUsername" [(ngModel)]="userResponse.userName" required>
+          <label>Username</label>
+        </div>
+        <div class="user-box">
+          <input type="password" name="signUpPassword" [(ngModel)]="userResponse.password" required>
+          <label>Password</label>
+        </div>
+        <div class="user-box">
+          <input type="password" name="signUpConfirmPassword" [(ngModel)]="confirmPassword" required>
+          <label>Confirm Password</label>
+        </div>
+        <div class="user-box">
+          <input type="email" name="signUpEmailAddress" [(ngModel)]="userResponse.emailAddress" required>
+          <label>Email Address</label>
+        </div>
+        <div *ngIf="errorMsg" class="errorMsg">{{ errorMsg }}</div>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+  </div>
+</div>

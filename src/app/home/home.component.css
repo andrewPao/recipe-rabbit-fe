@@ -1,6 +1,7 @@
 .container {
     text-align: center;
     margin-top: 50px;
+    
 }
 
 .buttons {
@@ -68,6 +69,28 @@ button {
     transform: translate(-50%, 50%); /* Adjust for centering */
 }
 
+.login-form2 {
+    position: absolute;
+    bottom: -200px; /* Start off-screen */
+    left: 40%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, 0); /* Center horizontally */
+    background: rgba(104, 85, 224, 0.6);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(103, 85, 224, 0.46);
+    border-radius: 10px;
+    opacity: 0; /* Start invisible */
+    transition: bottom 0.5s ease, opacity 0.5s ease;
+}
+
+.login-form2.slide-in {
+    bottom: 35%;
+    opacity: 1;
+    transform: translate(-50%, 50%); 
+}
+
+
 .login-box h2 {
     margin: 0 0 30px;
     padding: 0;
@@ -108,6 +131,11 @@ button {
     left: 0;
     color: #fff;
     font-size: 12px;
+}
+
+.errorMsg{
+    color: #D8000C;
+    margin-bottom: 5%;
 }
 
 .slide-in {
