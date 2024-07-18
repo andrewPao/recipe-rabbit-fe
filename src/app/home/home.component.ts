@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
   onSubmit() {
     
     if(this.userResponse.password != this.confirmPassword){
-      this.errorMsg = "Password and Confirm Password did not match"
+      this.errorMsg = "Password did not match"
     }else{
       console.log('User Name:', this.userResponse.userName);
       console.log('Password:', this.userResponse.password);
