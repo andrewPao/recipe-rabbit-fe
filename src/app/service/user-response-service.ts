@@ -7,6 +7,7 @@ export class UserReponse{
     public userName!: string;
     public password!: string;
     public emailAddress!: string;
+    public phoneNumber!: string;
 
     constructor(){}
 }
