@@ -1,9 +1,7 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { UserReponse } from '../service/user-response-service';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -25,6 +23,15 @@ export class HomeComponent implements OnInit {
   
   ngOnInit(){
 
+    // this.apiService.getData().subscribe(
+    //   response => {
+    //     console.log('Data:', response);
+    //   },
+    //   error => {
+    //     console.error('Error fetching data:', error);
+    //   }
+    // );
+
     this.userResponse.userName = "JohnDoe";
     this.userResponse.password = "password123";
     this.userResponse.emailAddress = "johndoe@example.com";
@@ -44,8 +51,9 @@ export class HomeComponent implements OnInit {
     this.signUpButton = false;
   }
 
-  onSubmit() {
-    
+  onSubmit(userForm :NgForm ) {
+    console.log(userForm.value.signUpUsername);
+
     if(this.userResponse.password != this.confirmPassword){
       this.errorMsg = "Password did not match"
     }else{

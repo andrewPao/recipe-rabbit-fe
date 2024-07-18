@@ -24,7 +24,7 @@
   <div *ngIf="signUpButton" class="login-form2 slide-in">
     <div class="login-box">
       <h2>Sign Up</h2>
-      <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <form (ngSubmit)="onSubmit(userForm)" #userForm="ngForm">
         <div class="user-box">
           <input type="text" name="signUpUsername" [(ngModel)]="userResponse.userName" required>
           <label>Username</label>
