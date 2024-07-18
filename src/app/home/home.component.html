@@ -30,17 +30,21 @@
           <label>Username</label>
         </div>
         <div class="user-box">
-          <input type="password" name="signUpPassword" [(ngModel)]="userResponse.password" required>
+          <input type="text" name="signUpPassword" [(ngModel)]="userResponse.password" required>
           <label>Password</label>
         </div>
         <div class="user-box">
-          <input type="password" name="signUpConfirmPassword" [(ngModel)]="confirmPassword" required>
+          <input type="text" name="signUpConfirmPassword" [(ngModel)]="confirmPassword" required>
           <label>Confirm Password</label>
         </div>
         <div class="user-box">
-          <input type="email" name="signUpEmailAddress" [(ngModel)]="userResponse.emailAddress" required>
+          <input type="text" name="signUpEmailAddress" [(ngModel)]="userResponse.emailAddress" required>
           <label>Email Address</label>
         </div>
+        <div class="user-box">
+            <input type="text" name="phoneNumber" [(ngModel)]="userResponse.phoneNumber" required>
+            <label>Phone Number</label>
+          </div>
         <div *ngIf="errorMsg" class="errorMsg">{{ errorMsg }}</div>
         <input type="submit" value="Create Account">
       </form>
