@@ -1,21 +1,21 @@
 <div class="container">
-  <h1 class="color-text">Welcome to Recipe Rabbit</h1>
+  <h1 class="color-text">{{sharedVar.welcomeMessage}}</h1>
   <div class="buttons">
-    <button class="btn btn-primary" (click)="signUpButtonTrigger()">Sign Up</button>
-    <button class="btn btn-secondary" (click)="loginButtonTrigger()">Login</button>
+    <button class="btn btn-primary" (click)="signUpButtonTrigger()">{{sharedVar.signUp}}</button>
+    <button class="btn btn-secondary" (click)="loginButtonTrigger()">{{sharedVar.login}}</button>
   </div>
   <br>
   <div *ngIf="loginButton" class="login-form slide-in">
     <div class="login-box">
-      <h2>Login</h2>
+      <h2>{{sharedVar.login}}</h2>
       <form>
         <div class="user-box">
           <input type="text" name="loginUsername" required>
-          <label>Username</label>
+          <label>{{sharedVar.username}}</label>
         </div>
         <div class="user-box">
           <input type="password" name="loginPassword" required>
-          <label>Password</label>
+          <label>{{sharedVar.password}}</label>
         </div>
       </form>
     </div>
@@ -23,29 +23,30 @@
 
   <div *ngIf="signUpButton" class="login-form2 slide-in">
     <div class="login-box">
-      <h2>Sign Up</h2>
-      <form (ngSubmit)="onSubmit(userForm)" #userForm="ngForm">
+      <h2>{{sharedVar.signUp}}</h2>
+      <form (ngSubmit)="onSubmit()" #userForm="ngForm">
         <div class="user-box">
-          <input type="text" name="signUpUsername" [(ngModel)]="userResponse.userName" required>
-          <label>Username</label>
+          <input type="text" name="signUpUsername" [(ngModel)]="userResponse.name" required>
+          <label>{{sharedVar.username}}</label>
         </div>
         <div class="user-box">
           <input type="text" name="signUpPassword" [(ngModel)]="userResponse.password" required>
-          <label>Password</label>
+          <label>{{sharedVar.password}}</label>
         </div>
         <div class="user-box">
           <input type="text" name="signUpConfirmPassword" [(ngModel)]="confirmPassword" required>
-          <label>Confirm Password</label>
+          <label>{{sharedVar.confirmPassword}}</label>
         </div>
         <div class="user-box">
           <input type="text" name="signUpEmailAddress" [(ngModel)]="userResponse.emailAddress" required>
-          <label>Email Address</label>
+          <label>{{sharedVar.email}}</label>
         </div>
         <div class="user-box">
             <input type="text" name="phoneNumber" [(ngModel)]="userResponse.phoneNumber" required>
-            <label>Phone Number</label>
+            <label>{{sharedVar.phoneNumber}}</label>
           </div>
         <div *ngIf="errorMsg" class="errorMsg">{{ errorMsg }}</div>
+        <div *ngIf="successMsg" class="successMsg">{{ successMsg }}</div>
         <input type="submit" value="Create Account">
       </form>
     </div>

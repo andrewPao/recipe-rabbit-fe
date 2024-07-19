@@ -159,9 +159,15 @@ button {
     margin-bottom: 5%;    
 }
 
+.successMsg{
+    color: #00d87083;
+    margin-bottom: 5%;    
+}
+
 .slide-in {
     animation: slideIn 0.5s forwards;
 }
+
 
 @keyframes slideIn {
     from {

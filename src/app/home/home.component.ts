@@ -1,7 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { UserReponse } from '../service/user-response-service';
 import { FormsModule, NgForm } from '@angular/forms';
+import { UserResponse } from '../service/userService/user-response-service';
+import { UserService } from '../service/userService/user.service';
+import { SharedVar } from '../SharedVar';
+
+
 
 @Component({
   selector: 'app-home',
@@ -11,33 +15,27 @@ import { FormsModule, NgForm } from '@angular/forms';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-  
+  users:any
+  response:any;
   signUpButton: boolean = false;
   loginButton: boolean = false;
   confirmPassword!: string;
   errorMsg!: string;
+  successMsg!: string;
 
-  constructor(public userResponse: UserReponse){
-    
-  }
+  constructor(
+    public userResponse: UserResponse, 
+    private userService: UserService,
+    public sharedVar: SharedVar
+  
+  ){}
   
   ngOnInit(){
 
-    // this.apiService.getData().subscribe(
-    //   response => {
-    //     console.log('Data:', response);
-    //   },
-    //   error => {
-    //     console.error('Error fetching data:', error);
-    //   }
-    // );
-
-    this.userResponse.userName = "JohnDoe";
-    this.userResponse.password = "password123";
-    this.userResponse.emailAddress = "johndoe@example.com";
-    
-    console.log(this.userResponse.userName); // Output: JohnDoe
-    console.log(this.userResponse.emailAddress); 
+    this.userService.getUser().subscribe((data: any) => {
+      this.sharedVar.userList = data;
+      console.log(this.sharedVar.userList);
+    });
     
   }
 
@@ -51,16 +49,28 @@ export class HomeComponent implements OnInit {
     this.signUpButton = false;
   }
 
-  onSubmit(userForm :NgForm ) {
-    console.log(userForm.value.signUpUsername);
-
+  onSubmit() {
     if(this.userResponse.password != this.confirmPassword){
-      this.errorMsg = "Password did not match"
+      this.errorMsg = this.sharedVar.mismatchPassword;
+      return;
     }else{
-      console.log('User Name:', this.userResponse.userName);
-      console.log('Password:', this.userResponse.password);
-      console.log('confirmPassword', this.confirmPassword);
-      console.log('Email Address:', this.userResponse.emailAddress);
+      this.validation();
+    }
+  }
+
+  validation(){
+    const userExists = this.sharedVar.userList.some(user => user.emailAddress == this.userResponse.emailAddress);
+
+    if(userExists){
+       this.errorMsg = this.sharedVar.existedEmail;
+    }else{
+      this.userService.addUser(this.userResponse).subscribe((data:any)=>{
+        this.response = data as any;
+        if(this.response.status == 201){
+          this.successMsg = this.sharedVar.createdUser;
+          this.errorMsg = "";
+        }
+      })
     }
   }
   

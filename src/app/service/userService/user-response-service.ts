@@ -3,8 +3,8 @@ import { Injectable } from "@angular/core";
     providedIn: 'root'
 })
 
-export class UserReponse{
-    public userName!: string;
+export class UserResponse{
+    public name!: string;
     public password!: string;
     public emailAddress!: string;
     public phoneNumber!: string;
