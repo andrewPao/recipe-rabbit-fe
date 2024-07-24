@@ -23,4 +23,9 @@ export class UserService{
     public addUser(userResponse: UserResponse):Observable<any>{
         return this.http.post<UserResponse>(`${this.apiServerUrl}/user/add`, userResponse, { observe: 'response' });
     }
+    
+    public loginUser(username: string, password:string){
+        const body = { username: username, password: password };
+        return this.http.post<any>(`${this.apiServerUrl}/user/login`, body, { observe: 'response'});
+    }
 }
