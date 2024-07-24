@@ -42,11 +42,15 @@ export class HomeComponent implements OnInit {
   }
 
   signUpButtonTrigger() {
+    this.resetLogin();
+    this.resetMessage();
     this.signUpButton = true;
     this.loginButton = false;
   }
 
   loginButtonTrigger() {
+    this.resetSignUpForm();
+    this.resetMessage();
     this.loginButton = true;
     this.signUpButton = false;
   }
@@ -76,6 +80,7 @@ export class HomeComponent implements OnInit {
             this.loginPassword = this.userResponse.password;
             
             this.loginButtonTrigger();
+            this.resetSignUpForm();
 
           }
         })
@@ -104,12 +109,32 @@ export class HomeComponent implements OnInit {
           if(response.body.message == 'success'){
             this.successMsg = this.sharedVar.loginSuccess;
             this.errorMsg = "";
+            this.resetLogin();
       
           }else if(response.body.message == 'failed'){
             this.errorMsg= this.sharedVar.loginFailed;
             this.successMsg = "";
           }
     });
+  }
+
+  resetSignUpForm(){
+    this.userResponse.name = '';
+    this.userResponse.password = '';
+    this.userResponse.emailAddress = '';
+    this.userResponse.phoneNumber = '';
+    this.confirmPassword = '';
+   
+}
+
+  resetLogin(){
+    this.loginUsername = '';
+    this.loginPassword = '';
+  }
+
+  resetMessage(){
+    this.errorMsg = '';
+    this.successMsg = '';
   }
 
 }
