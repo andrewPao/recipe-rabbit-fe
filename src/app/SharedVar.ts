@@ -11,6 +11,7 @@ export class SharedVar{
     public signUp = "Sign Up";
     public login = "Login To Recipe Rabbit";
     public loginButton = "Login";
+    public logoutButton = "Log Out"
     public username = "Username";
     public password = "Password";
     public confirmPassword = "Confirm Password";
@@ -24,6 +25,7 @@ export class SharedVar{
     public userNotCreated = "User not found";
     public incorrectLoginCredentials = "Login Unsuccessful";
     public loginFailed = "User does not exist or Incorrect Password";
+    public emptyFields = "Please fill in all fields";
 
     //Success Messages
     public createdUser = "Account created successfully";

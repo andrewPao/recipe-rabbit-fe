@@ -4,13 +4,14 @@ import { FormsModule, Validators } from '@angular/forms';
 import { UserResponse } from '../service/userService/user-response-service';
 import { UserService } from '../service/userService/user.service';
 import { SharedVar } from '../SharedVar';
+import { AdminPageComponent } from '../admin-page/admin-page.component';
 
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, AdminPageComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
@@ -19,6 +20,9 @@ export class HomeComponent implements OnInit {
   response: any;
   signUpButton: boolean = false;
   loginButton: boolean = false;
+  loggedInButton: boolean = false;
+  adminPage: boolean = false;
+
   confirmPassword!: string;
   errorMsg!: string;
   successMsg!: string;
@@ -53,6 +57,15 @@ export class HomeComponent implements OnInit {
     this.resetMessage();
     this.loginButton = true;
     this.signUpButton = false;
+   
+  }
+
+  logoutButtonTrigger(){
+    this.loggedInButton = false;
+    this.adminPage = false;
+    this.resetLogin();
+    this.resetMessage();
+
   }
 
   onSubmit() {
@@ -106,9 +119,16 @@ export class HomeComponent implements OnInit {
   loginUser(){
     this.userService.loginUser(this.loginUsername, this.loginPassword).subscribe((response: any) => {
       console.log(response);
-          if(response.body.message == 'success'){
+          if(response.body.message =='admin'){
+            this.resetMessage();
+            this.loggedInButton = true;
+            this.adminPage = true;
+            this.resetLogin();
+
+          }else if(response.body.message == 'success'){
             this.successMsg = this.sharedVar.loginSuccess;
             this.errorMsg = "";
+            this.loggedInButton = true;
             this.resetLogin();
       
           }else if(response.body.message == 'failed'){

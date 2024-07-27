@@ -8,6 +8,7 @@ export class UserResponse{
     public password!: string;
     public emailAddress!: string;
     public phoneNumber!: string;
+    public role!: string;
 
     constructor(){}
 }

@@ -4,10 +4,21 @@
 <div class="container">
   <h1 class="color-text">{{sharedVar.welcomeMessage}}</h1>
   <div class="buttons">
-    <button class="btn btn-primary" (click)="signUpButtonTrigger()">{{sharedVar.signUp}}</button>
-    <button class="btn btn-secondary" (click)="loginButtonTrigger()">{{sharedVar.loginButton}}</button>
+    <button *ngIf="!loggedInButton" class="btn btn-primary" (click)="signUpButtonTrigger()">{{sharedVar.signUp}}</button>
+    <button *ngIf="!loggedInButton" class="btn btn-secondary" (click)="loginButtonTrigger()">{{sharedVar.loginButton}}</button>
+    <button *ngIf="loggedInButton" class="btn btn-secondary" (click)="logoutButtonTrigger()">{{sharedVar.logoutButton}}</button>
   </div>
   <br>
+
+  <div  *ngIf="!adminPage">
+     <div *ngIf="successMsg" class="successMsg">{{ successMsg }}</div>
+  </div>
+
+  <div *ngIf="adminPage">
+    <app-admin-page></app-admin-page>
+  </div>
+
+  <div *ngIf="!loggedInButton">
   <div *ngIf="loginButton" class="login-form slide-in">
     <div class="login-box">
       <h2>{{sharedVar.login}}</h2>
@@ -28,7 +39,6 @@
       </form>
     </div>
   </div>
-
   <div *ngIf="signUpButton" class="login-form2 slide-in">
     <div class="login-box">
       <h2>{{sharedVar.signUp}}</h2>
@@ -55,11 +65,11 @@
           <label>{{sharedVar.phoneNumber}}</label>
         </div>
         <div *ngIf="errorMsg" class="errorMsg">{{ errorMsg }}</div>
-        <div *ngIf="successMsg" class="successMsg">{{ successMsg }}</div>
         <button value="Create Account" class="button" (click)="onSubmit()">{{sharedVar.createAccount}}</button>
       </form>
     </div>
   </div>
+</div>
 </div>
 </div>
 </html>

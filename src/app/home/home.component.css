@@ -38,19 +38,19 @@
             drop-shadow(0 0 10px rgba(0, 0, 255, 0.5)) 
             drop-shadow(0 0 10px rgba(76, 0, 130, 0.557)) 
             drop-shadow(0 0 10px rgba(238, 130, 238, 0.5));
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0); /* Slight white glow around text */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0); 
     
 }
 
 .buttons {
     display: flex;
-    justify-content: flex-end; /* Align buttons to the right */
-    width: 100%; /* Ensure buttons take full width */
+    justify-content: flex-end; 
+    width: 100%; 
     margin-top: 20px;
 }
 
 .btn {
-    margin-left: 10px; /* Adds space between the buttons */
+    margin-left: 10px; 
     padding: 10px 20px;
     font-size: 16px;
 }
@@ -102,35 +102,35 @@ button {
 
 .login-form {
     position:relative;
-    bottom: -200px; /* Start off-screen */
+    bottom: -200px;
     width: 400px;
     padding: 40px;
-    transform: translate(-50%, 0); /* Center horizontally */
+    transform: translate(-50%, 0); 
     background: rgba(104, 85, 224, 0.7);
     box-sizing: border-box;
     box-shadow: 0 15px 25px rgba(103, 85, 224, 0.46);
     border-radius: 10px;
-    opacity: 0; /* Start invisible */
+    opacity: 0;
     transition: bottom 0.5s ease, opacity 0.5s ease;
 }
 
 .login-form.slide-in {
-    bottom: 50%; /* Move to center vertically */
-    opacity: 1; /* Make visible */
-    transform: translate(-50%, 50%); /* Adjust for centering */
+    bottom: 50%; 
+    opacity: 1; 
+    transform: translate(-50%, 50%); 
 }
 
 .login-form2 {
     position: relative;
-    bottom: -200px; /* Start off-screen */
+    bottom: -200px; 
     width: 400px;
     padding: 40px;
-    transform: translate(-50%, 0); /* Center horizontally */
+    transform: translate(-50%, 0); 
     background: rgba(104, 85, 224, 0.7);
     box-sizing: border-box;
     box-shadow: 0 15px 25px rgba(103, 85, 224, 0.46);
     border-radius: 10px;
-    opacity: 0; /* Start invisible */
+    opacity: 0; 
     transition: bottom 0.5s ease, opacity 0.5s ease;
 }
 
@@ -200,11 +200,11 @@ button {
 
 @keyframes slideIn {
     from {
-        transform: translateY(100%); /* Start from below */
+        transform: translateY(100%); 
         opacity: 0;
     }
     to {
-        transform: translateY(0); /* Move to original position */
+        transform: translateY(0);
         opacity: 1;
     }
 }
