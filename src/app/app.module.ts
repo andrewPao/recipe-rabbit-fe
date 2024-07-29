@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     CommonModule,
     HomeComponent,
+    AdminPageComponent,
     BrowserAnimationsModule,
   ],
   providers: [],

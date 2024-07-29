@@ -28,4 +28,8 @@ export class UserService{
         const body = { username: username, password: password };
         return this.http.post<any>(`${this.apiServerUrl}/user/login`, body, { observe: 'response'});
     }
+
+    public deleteUser(id: number):Observable<any>{
+        return this.http.delete<any>(`${this.apiServerUrl}/user/delete/${id}`, {observe:'response'});
+    }
 }

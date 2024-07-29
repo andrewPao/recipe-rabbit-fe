@@ -11,13 +11,15 @@ export class SharedVar{
     public signUp = "Sign Up";
     public login = "Login To Recipe Rabbit";
     public loginButton = "Login";
-    public logoutButton = "Log Out"
+    public logoutButton = "Log Out";
     public username = "Username";
     public password = "Password";
     public confirmPassword = "Confirm Password";
     public email = "Email Address";
     public phoneNumber = "Phone Number"
     public createAccount = "Create Account";
+    public deleteButton = "Delete";
+    public updateButton = "Update";
 
     //Error Messages
     public mismatchPassword = "Password did not match";
@@ -30,6 +32,7 @@ export class SharedVar{
     //Success Messages
     public createdUser = "Account created successfully";
     public loginSuccess = "Login Success";
+    public deletedUser = "User has been deleted.";
 
     public userList!: UserResponse[]
 

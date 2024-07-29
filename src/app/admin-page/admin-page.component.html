@@ -1,5 +1,36 @@
 <!DOCTYPE html>
 <html>
-<p>admin-page works!</p>
-
+<body>
+    <div class="input__container">
+        <input class="input__search"type="text" [(ngModel)]= "searchInput" placeholder="Search for names.." title="Type in a name">
+    </div>
+    <table id="userTable" class="table-responsive">
+        <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Role</th>
+              <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of filteredUserList">
+              <td>{{ user.id }}</td>
+              
+              <td>{{ user.name }}</td>
+              <td>{{ user.emailAddress }}</td>
+              <td>{{ user.phoneNumber }}</td>
+              <td>{{ user.role }}</td>
+            
+              <td>
+                <button value="Delete" class="button" (click)="deleteUser(user.id)">{{sharedVar.deleteButton}}</button>
+                <button value="Update" class="button" (click)="updateUser(user)">{{sharedVar.updateButton}}</button>
+              </td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="successMsg" class="successMsg">{{ successMsg }}</div>
+</body>
 </html>

@@ -4,6 +4,7 @@ import { Injectable } from "@angular/core";
 })
 
 export class UserResponse{
+    public id!: number;
     public name!: string;
     public password!: string;
     public emailAddress!: string;
