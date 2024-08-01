@@ -4,6 +4,7 @@ import { UserService } from '../service/userService/user.service';
 import { SharedVar } from '../SharedVar';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SharedMethod } from '../SharedMethod';
 
 @Component({
   selector: 'app-admin-page',
@@ -21,14 +22,13 @@ updateTrigger : boolean = false;
     constructor(
     public userResponse: UserResponse,
     private userService: UserService,
-    public sharedVar: SharedVar
+    public sharedVar: SharedVar,
+    public sharedMethod: SharedMethod,
 
   ) { }
 
   ngOnInit(){
-    this.userService.getUser().subscribe((data: any)=>{
-      this.sharedVar.userList = data;
-    })
+    this.sharedMethod.getUserList();
   }
 
   get filteredUserList() {
@@ -53,9 +53,7 @@ updateTrigger : boolean = false;
           console.log(this.successMsg);
         }
         
-        this.userService.getUser().subscribe((data: any)=>{
-          this.sharedVar.userList = data;
-        })
+      this.sharedMethod.getUserList();
 
        
     })

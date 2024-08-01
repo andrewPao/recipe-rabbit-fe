@@ -6,6 +6,14 @@ import { UserResponse } from "./service/userService/user-response-service";
 })
 
 export class SharedVar{
+    //SharedVar
+    errorMsg!: string;
+    successMsg!: string;
+    loginUsername: any;
+    loginPassword: any;
+    confirmInputPassword: string= '';
+
+    
     //Labels and headers
     public welcomeMessage = "Welcome To Recipe Rabbit";
     public signUp = "Sign Up";
@@ -20,7 +28,8 @@ export class SharedVar{
     public createAccount = "Create Account";
     public deleteButton = "Delete";
     public updateButton = "Update";
-    public confirmationMessage = "Are you sure you want to delete this user?"
+    public confirmationMessage = "Are you sure you want to delete this user?";
+    public personalInfo = "Personal Info";
 
     //Error Messages
     public mismatchPassword = "Password did not match";

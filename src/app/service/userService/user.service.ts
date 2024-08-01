@@ -20,6 +20,11 @@ export class UserService{
         return this.http.get<any>(`${this.apiServerUrl}/user/findAll`);
     }
 
+    public getSingleUser(username: string, password: string):Observable<any>{
+        const body = { username: username, password: password };
+        return this.http.post<any>(`${this.apiServerUrl}/user/findSingleUser`, body, { observe:'response'});
+    }
+
     public addUser(userResponse: UserResponse):Observable<any>{
         return this.http.post<UserResponse>(`${this.apiServerUrl}/user/add`, userResponse, { observe: 'response' });
     }

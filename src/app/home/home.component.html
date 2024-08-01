@@ -15,9 +15,11 @@
   <br>
 
   <div  *ngIf="!adminPage">
-     <div *ngIf="successMsg" class="successMsg">{{ successMsg }}
+     <div *ngIf="sharedVar.successMsg">
       <div *ngIf="manageAccountButton" >
-        <app-update-form-modal></app-update-form-modal>
+        <app-update-form-modal 
+        [manageAccountButton] = "manageAccountButton"
+       ></app-update-form-modal>
       </div>
     
      </div>
@@ -33,18 +35,18 @@
       <h2>{{sharedVar.login}}</h2>
       <form>
         <div class="user-box">
-          <input type="text" name="loginUsername" [(ngModel)]="loginUsername" value= {{loginUsername}} required>
+          <input type="text" name="loginUsername" [(ngModel)]="sharedVar.loginUsername" value= {{sharedVar.loginUsername}} required>
           <label>{{sharedVar.username}}</label>
         </div>
         <div class="user-box">
-          <input type="password" name="loginPassword" [(ngModel)]="loginPassword" value= {{loginPassword}} required>
+          <input type="password" name="loginPassword" [(ngModel)]="sharedVar.loginPassword" value= {{sharedVar.loginPassword}} required>
           <label>{{sharedVar.password}}</label>
         </div>
         <button value="Login" class="button" (click)="loginUser()">{{sharedVar.loginButton}}</button>
         <br>
         <br>
-        <div *ngIf="errorMsg" class="errorMsg">{{ errorMsg }}</div>
-        <div *ngIf="successMsg" class="successMsg">{{ successMsg }}</div>
+        <div *ngIf="sharedVar.errorMsg" class="errorMsg">{{ sharedVar.errorMsg }}</div>
+        <div *ngIf="sharedVar.successMsg" class="successMsg">{{ sharedVar.successMsg }}</div>
       </form>
     </div>
   </div>
@@ -62,7 +64,7 @@
           <label>{{sharedVar.password}}</label>
         </div>
         <div class="user-box">
-          <input type="password" name="signUpConfirmPassword" [(ngModel)]="confirmPassword" required>
+          <input type="password" name="signUpConfirmPassword" [(ngModel)]="sharedVar.confirmInputPassword" required>
           <label>{{sharedVar.confirmPassword}}</label>
         </div>
         <div class="user-box">
@@ -73,7 +75,7 @@
           <input type="text" name="phoneNumber" [(ngModel)]="userResponse.phoneNumber" required>
           <label>{{sharedVar.phoneNumber}}</label>
         </div>
-        <div *ngIf="errorMsg" class="errorMsg">{{ errorMsg }}</div>
+        <div *ngIf="sharedVar.errorMsg" class="errorMsg">{{ sharedVar.errorMsg }}</div>
         <button value="Create Account" class="button" (click)="onSubmit()">{{sharedVar.createAccount}}</button>
       </form>
     </div>

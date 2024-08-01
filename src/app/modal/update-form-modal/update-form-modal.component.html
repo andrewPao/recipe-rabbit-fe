@@ -1,1 +1,37 @@
-<p>update-form-modal works!</p>
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+
+    <div *ngIf="manageAccountButton" class="login-form slide-in">
+        <div class="login-box">
+          <h2>{{sharedVar.personalInfo}}</h2>
+          <!-- <form (ngSubmit)="onSubmit()" #userForm="ngForm"> -->
+            <form id="userUpdateForm">
+            <div class="user-box">
+              <input type="text" name="updateUsermame" [(ngModel)]="userResponse.name" readonly>
+              <label>{{sharedVar.username}}</label>
+            </div>
+            <div class="user-box">
+              <input type="text" name="updatePassword" [(ngModel)]="userResponse.password" required>
+              <label>{{sharedVar.password}}</label>
+            </div>
+            <div class="user-box">
+              <input type="text" name="updateConfirmPassword" [(ngModel)]="userResponse.password" required>
+              <label>{{sharedVar.confirmPassword}}</label>
+            </div>
+            <div class="user-box">
+              <input type="text" name="updateEmailAddress" [(ngModel)]="userResponse.emailAddress" required>
+              <label>{{sharedVar.email}}</label>
+            </div>
+            <div class="user-box">
+              <input type="text" name="updatePhoneNumber" [(ngModel)]="userResponse.phoneNumber" required>
+              <label>{{sharedVar.phoneNumber}}</label>
+            </div>
+            <button value="Update" class="button" (click)="onSubmit()">{{sharedVar.createAccount}}</button>
+          </form>
+        </div>
+      </div>
+
+</html>
