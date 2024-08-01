@@ -3,6 +3,10 @@
 <div class="rabbitBackground">
 <div class="container">
   <h1 class="color-text">{{sharedVar.welcomeMessage}}</h1>
+  <div class="buttons" *ngIf="!adminPage && loggedInButton">
+    <button class="btn btn-secondary" (click)="editUserForm()">Manage Account</button>
+  </div>
+  
   <div class="buttons">
     <button *ngIf="!loggedInButton" class="btn btn-primary" (click)="signUpButtonTrigger()">{{sharedVar.signUp}}</button>
     <button *ngIf="!loggedInButton" class="btn btn-secondary" (click)="loginButtonTrigger()">{{sharedVar.loginButton}}</button>
@@ -11,7 +15,12 @@
   <br>
 
   <div  *ngIf="!adminPage">
-     <div *ngIf="successMsg" class="successMsg">{{ successMsg }}</div>
+     <div *ngIf="successMsg" class="successMsg">{{ successMsg }}
+      <div *ngIf="manageAccountButton" >
+        <app-update-form-modal></app-update-form-modal>
+      </div>
+    
+     </div>
   </div>
 
   <div *ngIf="adminPage">
@@ -69,6 +78,7 @@
       </form>
     </div>
   </div>
+
 </div>
 </div>
 </div>

@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { UpdateFormModalComponent } from './modal/update-form-modal/update-form-modal.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     CommonModule,
     HomeComponent,
     AdminPageComponent,
+    UpdateFormModalComponent,
     BrowserAnimationsModule,
   ],
   providers: [],

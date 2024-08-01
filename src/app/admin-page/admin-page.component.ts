@@ -42,18 +42,22 @@ updateTrigger : boolean = false;
   }
 
   deleteUser(id:number){
-    const isConfirmed = window.confirm("Are you sure you want to delete this user?");
+    const isConfirmed = window.confirm(this.sharedVar.confirmationMessage);
 
     if(isConfirmed){
       console.log(id);
       this.userService.deleteUser(id).subscribe((response:any)=>{
+        console.log(response);
+        if(response.status == 200){
+          this.successMsg = this.sharedVar.deletedUser;
+          console.log(this.successMsg);
+        }
+        
         this.userService.getUser().subscribe((data: any)=>{
           this.sharedVar.userList = data;
         })
 
-        if(response == 200){
-          this.successMsg = this.sharedVar.deletedUser;
-        }
+       
     })
   }
   }

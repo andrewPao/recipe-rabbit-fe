@@ -20,6 +20,7 @@ export class SharedVar{
     public createAccount = "Create Account";
     public deleteButton = "Delete";
     public updateButton = "Update";
+    public confirmationMessage = "Are you sure you want to delete this user?"
 
     //Error Messages
     public mismatchPassword = "Password did not match";

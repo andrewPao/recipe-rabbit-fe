@@ -5,13 +5,14 @@ import { UserResponse } from '../service/userService/user-response-service';
 import { UserService } from '../service/userService/user.service';
 import { SharedVar } from '../SharedVar';
 import { AdminPageComponent } from '../admin-page/admin-page.component';
+import { UpdateFormModalComponent } from '../modal/update-form-modal/update-form-modal.component';
 
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule, AdminPageComponent],
+  imports: [CommonModule, FormsModule, AdminPageComponent, UpdateFormModalComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
@@ -21,7 +22,9 @@ export class HomeComponent implements OnInit {
   signUpButton: boolean = false;
   loginButton: boolean = false;
   loggedInButton: boolean = false;
+  manageAccountButton: boolean = false;
   adminPage: boolean = false;
+  
 
   confirmPassword!: string;
   errorMsg!: string;
@@ -63,9 +66,14 @@ export class HomeComponent implements OnInit {
   logoutButtonTrigger(){
     this.loggedInButton = false;
     this.adminPage = false;
+    this.manageAccountButton = false; 
     this.resetLogin();
     this.resetMessage();
 
+  }
+
+  editUserForm(){
+    this.manageAccountButton = true;
   }
 
   onSubmit() {
