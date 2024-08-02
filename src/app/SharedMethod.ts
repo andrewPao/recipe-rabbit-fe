@@ -16,12 +16,12 @@ export class SharedMethod{
     constructor(
         public userResponse: UserResponse,
         private userService: UserService,
-        public sharedVar: SharedVar,
+        public sharedVar: SharedVar
     
       ) { }
     
     getUserList(){
-        this.userService.getUser().subscribe((data: any) => {
+        this.userService.getUserList().subscribe((data: any) => {
             this.sharedVar.userList = data;
             console.log(this.sharedVar.userList);
           });

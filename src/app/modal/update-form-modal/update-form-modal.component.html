@@ -4,7 +4,7 @@
 
 </head>
 
-    <div *ngIf="manageAccountButton" class="login-form slide-in">
+    <div *ngIf="manageAccountButton && userResponse" class="login-form slide-in">
         <div class="login-box">
           <h2>{{sharedVar.personalInfo}}</h2>
           <!-- <form (ngSubmit)="onSubmit()" #userForm="ngForm"> -->
@@ -29,7 +29,11 @@
               <input type="text" name="updatePhoneNumber" [(ngModel)]="userResponse.phoneNumber" required>
               <label>{{sharedVar.phoneNumber}}</label>
             </div>
-            <button value="Update" class="button" (click)="onSubmit()">{{sharedVar.createAccount}}</button>
+            <div *ngIf="sharedVar.successMsg" class="successMsg">{{ sharedVar.successMsg }}
+            <br/>
+            </div>
+
+            <button value="Update" class="button" (click)="updateUser()">{{sharedVar.updateButton}}</button>
           </form>
         </div>
       </div>

@@ -18,7 +18,7 @@ export class UpdateFormModalComponent implements OnInit{
 
   confirmPassword:string='';
   errorMsg:string='';
-  userResponse: any;
+  userResponse!: UserResponse; 
 
   constructor(
     private userService: UserService,
@@ -28,17 +28,27 @@ export class UpdateFormModalComponent implements OnInit{
   ) { }
 
   ngOnInit(){
-
     this.sharedMethod.getUserList();
-    console.log(this.manageAccountButton + ", " + this.sharedVar.loginUsername + ", " + this.sharedVar.loginPassword);
+    this.assignedUserReponseToObservable();
+  }
+
+  updateUser(){
+    this.sharedVar.loginUsername = this.userResponse.name;
+    this.sharedVar.loginPassword = this.userResponse.password;
+
+    this.userService.updateUser(this.userResponse).subscribe((response: any)=>{
+      console.log(response);
+        this.sharedVar.successMsg = this.sharedVar.updatedCredentialSuccess;
+        this.assignedUserReponseToObservable();
+    })
+  }
+
+  assignedUserReponseToObservable(){
     this.sharedMethod.getSingleUser();
     this.sharedMethod.userResponse$.subscribe((response: any) => {
       this.userResponse = response;
       console.log(this.userResponse);
-    });
-  }
-
-  onSubmit(){
+    })
 
   }
 }

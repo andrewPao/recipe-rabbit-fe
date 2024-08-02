@@ -113,7 +113,6 @@ export class HomeComponent implements OnInit {
             this.sharedMethod.resetLogin();
 
           }else if(response.body.message == 'success'){
-            this.sharedVar.successMsg = this.sharedVar.loginSuccess;
             this.sharedVar.errorMsg = "";
             this.loggedInButton = true;
       

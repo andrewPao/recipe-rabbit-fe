@@ -16,7 +16,7 @@ export class UserService{
         
     }
 
-    public getUser(): Observable<any>{
+    public getUserList(): Observable<any>{
         return this.http.get<any>(`${this.apiServerUrl}/user/findAll`);
     }
 
@@ -26,7 +26,7 @@ export class UserService{
     }
 
     public addUser(userResponse: UserResponse):Observable<any>{
-        return this.http.post<UserResponse>(`${this.apiServerUrl}/user/add`, userResponse, { observe: 'response' });
+        return this.http.post<any>(`${this.apiServerUrl}/user/add`, userResponse, { observe: 'response' });
     }
     
     public loginUser(username: string, password:string):Observable<any>{
@@ -36,5 +36,9 @@ export class UserService{
 
     public deleteUser(id: number):Observable<any>{
         return this.http.delete<any>(`${this.apiServerUrl}/user/delete/${id}`, {observe:'response'});
+    }
+
+    public updateUser(userResponse: UserResponse){
+        return this.http.put<any>(`${this.apiServerUrl}/user/update`, userResponse, { observe: 'response' });
     }
 }

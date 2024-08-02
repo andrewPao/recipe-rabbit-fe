@@ -89,18 +89,6 @@ button {
     transition: 0.4s;
 }
 
-.createAccountButton{
-    cursor: pointer;
-    border: 0;
-    border-radius: 4px;
-    font-weight: 600;
-    margin: 0 10px;
-    width: 200px;
-    padding: 10px 0;
-    box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
-    transition: 0.4s;
-}
-
 .login-form {
     position:relative;
     bottom: -200px;
@@ -186,11 +174,6 @@ button {
 
 .errorMsg{
     color: #d8000b87;
-    margin-bottom: 5%;    
-}
-
-.successMsg{
-    color: #00d87083;
     margin-bottom: 5%;    
 }
 

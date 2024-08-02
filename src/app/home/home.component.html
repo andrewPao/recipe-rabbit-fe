@@ -15,7 +15,7 @@
   <br>
 
   <div  *ngIf="!adminPage">
-     <div *ngIf="sharedVar.successMsg">
+     <div *ngIf="loggedInButton">
       <div *ngIf="manageAccountButton" >
         <app-update-form-modal 
         [manageAccountButton] = "manageAccountButton"
@@ -46,7 +46,6 @@
         <br>
         <br>
         <div *ngIf="sharedVar.errorMsg" class="errorMsg">{{ sharedVar.errorMsg }}</div>
-        <div *ngIf="sharedVar.successMsg" class="successMsg">{{ sharedVar.successMsg }}</div>
       </form>
     </div>
   </div>

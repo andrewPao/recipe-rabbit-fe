@@ -9,6 +9,7 @@ export class SharedVar{
     //SharedVar
     errorMsg!: string;
     successMsg!: string;
+    responseStatus!: string;
     loginUsername: any;
     loginPassword: any;
     confirmInputPassword: string= '';
@@ -43,6 +44,7 @@ export class SharedVar{
     public createdUser = "Account created successfully";
     public loginSuccess = "Login Success";
     public deletedUser = "User has been deleted.";
+    public updatedCredentialSuccess = "Saved Sucess";
 
     public userList!: UserResponse[]
 
