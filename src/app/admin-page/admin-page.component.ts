@@ -21,7 +21,7 @@ updateTrigger : boolean = false;
 
     constructor(
     public userResponse: UserResponse,
-    private userService: UserService,
+    public userService: UserService,
     public sharedVar: SharedVar,
     public sharedMethod: SharedMethod,
 

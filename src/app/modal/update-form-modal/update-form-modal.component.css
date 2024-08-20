@@ -100,3 +100,8 @@ button:hover {
     color: #00d87083;
     margin-bottom: 5%;    
 }
+
+.errMsg{
+    color: #d8000b87;
+    margin-bottom: 5%;    
+}

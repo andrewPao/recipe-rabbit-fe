@@ -13,12 +13,14 @@ import { SharedMethod } from '../../SharedMethod';
   templateUrl: './update-form-modal.component.html',
   styleUrl: './update-form-modal.component.css'
 })
-export class UpdateFormModalComponent implements OnInit{
+export class UpdateFormModalComponent implements OnInit {
   @Input() manageAccountButton!: boolean;
 
-  confirmPassword:string='';
-  errorMsg:string='';
-  userResponse!: UserResponse; 
+  oldPassword: string = '';
+  newPassword: string = '';
+  confirmPassword: string = '';
+  errorMsg: string = '';
+  userResponse!: UserResponse;
 
   constructor(
     private userService: UserService,
@@ -27,23 +29,37 @@ export class UpdateFormModalComponent implements OnInit{
 
   ) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.sharedMethod.getUserList();
     this.assignedUserReponseToObservable();
   }
 
-  updateUser(){
-    this.sharedVar.loginUsername = this.userResponse.name;
-    this.sharedVar.loginPassword = this.userResponse.password;
+  updateUser() {
 
-    this.userService.updateUser(this.userResponse).subscribe((response: any)=>{
-      console.log(response);
-        this.sharedVar.successMsg = this.sharedVar.updatedCredentialSuccess;
-        this.assignedUserReponseToObservable();
-    })
+    if (this.oldPassword == this.userResponse.password) {
+      if (this.newPassword == this.confirmPassword) {
+        this.sharedVar.loginUsername = this.userResponse.name;
+        this.sharedVar.loginPassword = this.confirmPassword;
+        this.userResponse.password = this.confirmPassword;
+
+        this.userService.updateUser(this.userResponse).subscribe((response: any) => {
+          console.log(response);
+          this.sharedVar.successMsg = this.sharedVar.updatedCredentialSuccess;
+          this.sharedVar.errorMsg = '';
+          this.assignedUserReponseToObservable();
+        })
+
+
+      } else {
+        this.sharedVar.errorMsg = this.sharedVar.mismatchPassword;
+      }
+
+    } else {
+      this.sharedVar.errorMsg = this.sharedVar.incorrectOldPassword;
+    }
   }
 
-  assignedUserReponseToObservable(){
+  assignedUserReponseToObservable() {
     this.sharedMethod.getSingleUser();
     this.sharedMethod.userResponse$.subscribe((response: any) => {
       this.userResponse = response;
@@ -51,4 +67,5 @@ export class UpdateFormModalComponent implements OnInit{
     })
 
   }
+
 }

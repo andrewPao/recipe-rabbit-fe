@@ -23,7 +23,9 @@ export class SharedVar{
     public logoutButton = "Log Out";
     public username = "Username";
     public password = "Password";
+    public oldPassword = "Old Password";
     public confirmPassword = "Confirm Password";
+    public newPassword = "New Password"
     public email = "Email Address";
     public phoneNumber = "Phone Number"
     public createAccount = "Create Account";
@@ -31,8 +33,10 @@ export class SharedVar{
     public updateButton = "Update";
     public confirmationMessage = "Are you sure you want to delete this user?";
     public personalInfo = "Personal Info";
+    
 
     //Error Messages
+    public incorrectOldPassword = "Incorrect Password";
     public mismatchPassword = "Password did not match";
     public existedEmail = "User has already been Registered";
     public userNotCreated = "User not found";
