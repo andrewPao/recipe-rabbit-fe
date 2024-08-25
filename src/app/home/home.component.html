@@ -1,86 +1,96 @@
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html>
+  <!-- <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing</title>
+    <link rel="stylesheet" href="C:\Users\Admin\recipe-rabbit\src\app\assets\image\RabbitBackground.jpg">
+</head> -->
 <div class="rabbitBackground">
-<div class="container">
-  <h1 class="color-text">{{sharedVar.welcomeMessage}}</h1>
-  <div class="buttons" *ngIf="!adminPage && loggedInButton">
-    <button class="btn btn-secondary" (click)="editUserForm()">Manage Account</button>
-  </div>
-  
-  <div class="buttons">
-    <button *ngIf="!loggedInButton" class="btn btn-primary" (click)="signUpButtonTrigger()">{{sharedVar.signUp}}</button>
-    <button *ngIf="!loggedInButton" class="btn btn-secondary" (click)="loginButtonTrigger()">{{sharedVar.loginButton}}</button>
-    <button *ngIf="loggedInButton" class="btn btn-secondary" (click)="logoutButtonTrigger()">{{sharedVar.logoutButton}}</button>
-  </div>
-  <br>
+  <div class="container">
+    <h1 class="color-text">{{sharedVar.welcomeMessage}}</h1>
+    <div class="buttons" *ngIf="!adminPage && loggedInButton">
+      <button class="btn btn-secondary" (click)="editUserForm()">Manage Account</button>
+    </div>
 
-  <div  *ngIf="!adminPage">
-     <div *ngIf="loggedInButton">
-      <div *ngIf="manageAccountButton" >
-        <app-update-form-modal 
-        [manageAccountButton] = "manageAccountButton"
-       ></app-update-form-modal>
+    <div class="buttons">
+      <button *ngIf="!loggedInButton" class="btn btn-primary"
+        (click)="signUpButtonTrigger()">{{sharedVar.signUp}}</button>
+      <button *ngIf="!loggedInButton" class="btn btn-secondary"
+        (click)="loginButtonTrigger()">{{sharedVar.loginButton}}</button>
+      <button *ngIf="loggedInButton" class="btn btn-secondary"
+        (click)="logoutButtonTrigger()">{{sharedVar.logoutButton}}</button>
+    </div>
+    <br>
+
+    <div *ngIf="!adminPage">
+      <div *ngIf="loggedInButton">
+        <div *ngIf="manageAccountButton">
+          <app-update-form-modal [manageAccountButton]="manageAccountButton"></app-update-form-modal>
+        </div>
+
       </div>
-    
-     </div>
-  </div>
+    </div>
 
-  <div *ngIf="adminPage">
-    <app-admin-page></app-admin-page>
-  </div>
+    <div *ngIf="adminPage">
+      <app-admin-page></app-admin-page>
+    </div>
 
-  <div *ngIf="!loggedInButton">
-  <div *ngIf="loginButton" class="login-form slide-in">
-    <div class="login-box">
-      <h2>{{sharedVar.login}}</h2>
-      <form>
-        <div class="user-box">
-          <input type="text" name="loginUsername" [(ngModel)]="sharedVar.loginUsername" value= {{sharedVar.loginUsername}} required>
-          <label>{{sharedVar.username}}</label>
+    <div *ngIf="!loggedInButton">
+      <div *ngIf="loginButton" class="login-form slide-in">
+        <div class="login-box">
+          <h2>{{sharedVar.login}}</h2>
+          <form>
+            <div class="user-box">
+              <input type="text" name="loginUsername" [(ngModel)]="sharedVar.loginUsername"
+                value={{sharedVar.loginUsername}} required>
+              <label>{{sharedVar.username}}</label>
+            </div>
+            <div class="user-box">
+              <input type="password" name="loginPassword" [(ngModel)]="sharedVar.loginPassword"
+                value={{sharedVar.loginPassword}} required>
+              <label>{{sharedVar.password}}</label>
+            </div>
+            <button value="Login" class="button" (click)="loginUser()">{{sharedVar.loginButton}}</button>
+            <br>
+            <br>
+            <div *ngIf="sharedVar.errorMsg" class="errorMsg">{{ sharedVar.errorMsg }}</div>
+          </form>
         </div>
-        <div class="user-box">
-          <input type="password" name="loginPassword" [(ngModel)]="sharedVar.loginPassword" value= {{sharedVar.loginPassword}} required>
-          <label>{{sharedVar.password}}</label>
+      </div>
+      <div *ngIf="signUpButton" class="login-form2 slide-in">
+        <div class="login-box">
+          <h2>{{sharedVar.signUp}}</h2>
+          <!-- <form (ngSubmit)="onSubmit()" #userForm="ngForm"> -->
+          <form id="userCreationForm">
+            <div class="user-box">
+              <input type="text" name="signUpUsername" [(ngModel)]="userResponse.name" required>
+              <label>{{sharedVar.username}}</label>
+            </div>
+            <div class="user-box">
+              <input type="password" name="signUpPassword" [(ngModel)]="userResponse.password" required>
+              <label>{{sharedVar.password}}</label>
+            </div>
+            <div class="user-box">
+              <input type="password" name="signUpConfirmPassword" [(ngModel)]="sharedVar.confirmInputPassword" required>
+              <label>{{sharedVar.confirmPassword}}</label>
+            </div>
+            <div class="user-box">
+              <input type="text" name="signUpEmailAddress" [(ngModel)]="userResponse.emailAddress" required>
+              <label>{{sharedVar.email}}</label>
+            </div>
+            <div class="user-box">
+              <input type="text" name="phoneNumber" [(ngModel)]="userResponse.phoneNumber" required>
+              <label>{{sharedVar.phoneNumber}}</label>
+            </div>
+            <div *ngIf="sharedVar.errorMsg" class="errorMsg">{{ sharedVar.errorMsg }}</div>
+            <button value="Create Account" class="button" (click)="onSubmit()">{{sharedVar.createAccount}}</button>
+          </form>
         </div>
-        <button value="Login" class="button" (click)="loginUser()">{{sharedVar.loginButton}}</button>
-        <br>
-        <br>
-        <div *ngIf="sharedVar.errorMsg" class="errorMsg">{{ sharedVar.errorMsg }}</div>
-      </form>
+      </div>
+
     </div>
   </div>
-  <div *ngIf="signUpButton" class="login-form2 slide-in">
-    <div class="login-box">
-      <h2>{{sharedVar.signUp}}</h2>
-      <!-- <form (ngSubmit)="onSubmit()" #userForm="ngForm"> -->
-        <form id="userCreationForm">
-        <div class="user-box">
-          <input type="text" name="signUpUsername" [(ngModel)]="userResponse.name" required>
-          <label>{{sharedVar.username}}</label>
-        </div>
-        <div class="user-box">
-          <input type="password" name="signUpPassword" [(ngModel)]="userResponse.password" required>
-          <label>{{sharedVar.password}}</label>
-        </div>
-        <div class="user-box">
-          <input type="password" name="signUpConfirmPassword" [(ngModel)]="sharedVar.confirmInputPassword" required>
-          <label>{{sharedVar.confirmPassword}}</label>
-        </div>
-        <div class="user-box">
-          <input type="text" name="signUpEmailAddress" [(ngModel)]="userResponse.emailAddress" required>
-          <label>{{sharedVar.email}}</label>
-        </div>
-        <div class="user-box">
-          <input type="text" name="phoneNumber" [(ngModel)]="userResponse.phoneNumber" required>
-          <label>{{sharedVar.phoneNumber}}</label>
-        </div>
-        <div *ngIf="sharedVar.errorMsg" class="errorMsg">{{ sharedVar.errorMsg }}</div>
-        <button value="Create Account" class="button" (click)="onSubmit()">{{sharedVar.createAccount}}</button>
-      </form>
-    </div>
-  </div>
+</div>
 
-</div>
-</div>
-</div>
 </html>
